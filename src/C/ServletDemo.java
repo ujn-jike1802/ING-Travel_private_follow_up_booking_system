@@ -69,6 +69,6 @@ public class ServletDemo extends HttpServlet {
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		String action=request.getParameter("action");
-		out.print("i love u");
+		out.print("Œ“ «demo.do");
 	}
 }
