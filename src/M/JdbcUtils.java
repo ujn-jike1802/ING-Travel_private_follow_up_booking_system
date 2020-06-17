@@ -23,7 +23,7 @@ public class JdbcUtils {
 	private static DataSource dataSource=null;
 	
 	static {
-		dataSource=new ComboPooledDataSource("mvcdemo");
+		dataSource=new ComboPooledDataSource("bookingdemo");
 	}
 	
 	public static Connection getConnection() throws SQLException {
