@@ -4,6 +4,6 @@ import java.util.List;
 
 
 public interface DemoDao {  
-	//·½·¨ÃèÊö
+	//æˆ‘æ˜¯demoæ–¹æ³•
 	public void demo(classDemo user);
 }

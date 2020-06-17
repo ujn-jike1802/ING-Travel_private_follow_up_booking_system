@@ -8,177 +8,177 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * ·´ÉäµÄ Utils º¯Êı¼¯ºÏ
- * Ìá¹©·ÃÎÊË½ÓĞ±äÁ¿, »ñÈ¡·ºĞÍÀàĞÍ Class, ÌáÈ¡¼¯ºÏÖĞÔªËØÊôĞÔµÈ Utils º¯Êı
+ * åå°„çš„ Utils å‡½æ•°é›†åˆ
+ * æä¾›è®¿é—®ç§æœ‰å˜é‡, è·å–æ³›å‹ç±»å‹ Class, æå–é›†åˆä¸­å…ƒç´ å±æ€§ç­‰ Utils å‡½æ•°
  * @author Administrator
  *
  */
 public class ReflectionUtils {
 
-    
-    /**
-     * Í¨¹ı·´Éä, »ñµÃ¶¨Òå Class Ê±ÉùÃ÷µÄ¸¸ÀàµÄ·ºĞÍ²ÎÊıµÄÀàĞÍ
-     * Èç: public EmployeeDao extends BaseDao<Employee, String>
-     * @param clazz
-     * @param index
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    public static Class getSuperClassGenricType(Class clazz, int index){
-        Type genType = clazz.getGenericSuperclass();
-        
-        if(!(genType instanceof ParameterizedType)){
-            return Object.class;
-        }
-        
-        Type [] params = ((ParameterizedType)genType).getActualTypeArguments();
-        
-        if(index >= params.length || index < 0){
-            return Object.class;
-        }
-        
-        if(!(params[index] instanceof Class)){
-            return Object.class;
-        }
-        
-        return (Class) params[index];
-    }
-    
-    /**
-     * Í¨¹ı·´Éä, »ñµÃ Class ¶¨ÒåÖĞÉùÃ÷µÄ¸¸ÀàµÄ·ºĞÍ²ÎÊıÀàĞÍ
-     * Èç: public EmployeeDao extends BaseDao<Employee, String>
-     * @param <T>
-     * @param clazz
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    public static<T> Class<T> getSuperGenericType(Class clazz){
-        return getSuperClassGenricType(clazz, 0);
-    }
-    
-    /**
-     * Ñ­»·ÏòÉÏ×ªĞÍ, »ñÈ¡¶ÔÏóµÄ DeclaredMethod
-     * @param object
-     * @param methodName
-     * @param parameterTypes
-     * @return
-     */
-    public static Method getDeclaredMethod(Object object, String methodName, Class<?>[] parameterTypes){
-        
-        for(Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()){
-            try {
-                //superClass.getMethod(methodName, parameterTypes);
-                return superClass.getDeclaredMethod(methodName, parameterTypes);
-            } catch (NoSuchMethodException e) {
-                //Method ²»ÔÚµ±Ç°Àà¶¨Òå, ¼ÌĞøÏòÉÏ×ªĞÍ
-            }
-            //..
-        }
-        
-        return null;
-    }
-    
-    /**
-     * Ê¹ filed ±äÎª¿É·ÃÎÊ
-     * @param field
-     */
-    public static void makeAccessible(Field field){
-        if(!Modifier.isPublic(field.getModifiers())){
-            field.setAccessible(true);
-        }
-    }
-    
-    /**
-     * Ñ­»·ÏòÉÏ×ªĞÍ, »ñÈ¡¶ÔÏóµÄ DeclaredField
-     * @param object
-     * @param filedName
-     * @return
-     */
-    public static Field getDeclaredField(Object object, String filedName){
-        
-        for(Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()){
-            try {
-                return superClass.getDeclaredField(filedName);
-            } catch (NoSuchFieldException e) {
-                //Field ²»ÔÚµ±Ç°Àà¶¨Òå, ¼ÌĞøÏòÉÏ×ªĞÍ
-            }
-        }
-        return null;
-    }
-    
-    /**
-     * Ö±½Óµ÷ÓÃ¶ÔÏó·½·¨, ¶øºöÂÔĞŞÊÎ·û(private, protected)
-     * @param object
-     * @param methodName
-     * @param parameterTypes
-     * @param parameters
-     * @return
-     * @throws InvocationTargetException 
-     * @throws IllegalArgumentException 
-     */
-    public static Object invokeMethod(Object object, String methodName, Class<?> [] parameterTypes,
-            Object [] parameters) throws InvocationTargetException{
-        
-        Method method = getDeclaredMethod(object, methodName, parameterTypes);
-        
-        if(method == null){
-            throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + object + "]");
-        }
-        
-        method.setAccessible(true);
-        
-        try {
-            return method.invoke(object, parameters);
-        } catch(IllegalAccessException e) {
-            System.out.println("²»¿ÉÄÜÅ×³öµÄÒì³£");
-        } 
-        
-        return null;
-    }
-    
-    /**
-     * Ö±½ÓÉèÖÃ¶ÔÏóÊôĞÔÖµ, ºöÂÔ private/protected ĞŞÊÎ·û, Ò²²»¾­¹ı setter
-     * @param object
-     * @param fieldName
-     * @param value
-     */
-    public static void setFieldValue(Object object, String fieldName, Object value){
-        Field field = getDeclaredField(object, fieldName);
-        
-        if (field == null)
-            throw new IllegalArgumentException("Could not find field [" + fieldName + "] on target [" + object + "]");
-        
-        makeAccessible(field);
-        
-        try {
-            field.set(object, value);
-        } catch (IllegalAccessException e) {
-            System.out.println("²»¿ÉÄÜÅ×³öµÄÒì³£");
-        }
-    }
-    
-    /**
-     * Ö±½Ó¶ÁÈ¡¶ÔÏóµÄÊôĞÔÖµ, ºöÂÔ private/protected ĞŞÊÎ·û, Ò²²»¾­¹ı getter
-     * @param object
-     * @param fieldName
-     * @return
-     */
-    public static Object getFieldValue(Object object, String fieldName){
-        Field field = getDeclaredField(object, fieldName);
-        
-        if (field == null)
-            throw new IllegalArgumentException("Could not find field [" + fieldName + "] on target [" + object + "]");
-        
-        makeAccessible(field);
-        
-        Object result = null;
-        
-        try {
-            result = field.get(object);
-        } catch (IllegalAccessException e) {
-            System.out.println("²»¿ÉÄÜÅ×³öµÄÒì³£");
-        }
-        
-        return result;
-    }
+	
+	/**
+	 * é€šè¿‡åå°„, è·å¾—å®šä¹‰ Class æ—¶å£°æ˜çš„çˆ¶ç±»çš„æ³›å‹å‚æ•°çš„ç±»å‹
+	 * å¦‚: public EmployeeDao extends BaseDao<Employee, String>
+	 * @param clazz
+	 * @param index
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static Class getSuperClassGenricType(Class clazz, int index){
+		Type genType = clazz.getGenericSuperclass();
+		
+		if(!(genType instanceof ParameterizedType)){
+			return Object.class;
+		}
+		
+		Type [] params = ((ParameterizedType)genType).getActualTypeArguments();
+		
+		if(index >= params.length || index < 0){
+			return Object.class;
+		}
+		
+		if(!(params[index] instanceof Class)){
+			return Object.class;
+		}
+		
+		return (Class) params[index];
+	}
+	
+	/**
+	 * é€šè¿‡åå°„, è·å¾— Class å®šä¹‰ä¸­å£°æ˜çš„çˆ¶ç±»çš„æ³›å‹å‚æ•°ç±»å‹
+	 * å¦‚: public EmployeeDao extends BaseDao<Employee, String>
+	 * @param <T>
+	 * @param clazz
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static<T> Class<T> getSuperGenericType(Class clazz){
+		return getSuperClassGenricType(clazz, 0);
+	}
+	
+	/**
+	 * å¾ªç¯å‘ä¸Šè½¬å‹, è·å–å¯¹è±¡çš„ DeclaredMethod
+	 * @param object
+	 * @param methodName
+	 * @param parameterTypes
+	 * @return
+	 */
+	public static Method getDeclaredMethod(Object object, String methodName, Class<?>[] parameterTypes){
+		
+		for(Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()){
+			try {
+				//superClass.getMethod(methodName, parameterTypes);
+				return superClass.getDeclaredMethod(methodName, parameterTypes);
+			} catch (NoSuchMethodException e) {
+				//Method ä¸åœ¨å½“å‰ç±»å®šä¹‰, ç»§ç»­å‘ä¸Šè½¬å‹
+			}
+			//..
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * ä½¿ filed å˜ä¸ºå¯è®¿é—®
+	 * @param field
+	 */
+	public static void makeAccessible(Field field){
+		if(!Modifier.isPublic(field.getModifiers())){
+			field.setAccessible(true);
+		}
+	}
+	
+	/**
+	 * å¾ªç¯å‘ä¸Šè½¬å‹, è·å–å¯¹è±¡çš„ DeclaredField
+	 * @param object
+	 * @param filedName
+	 * @return
+	 */
+	public static Field getDeclaredField(Object object, String filedName){
+		
+		for(Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()){
+			try {
+				return superClass.getDeclaredField(filedName);
+			} catch (NoSuchFieldException e) {
+				//Field ä¸åœ¨å½“å‰ç±»å®šä¹‰, ç»§ç»­å‘ä¸Šè½¬å‹
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * ç›´æ¥è°ƒç”¨å¯¹è±¡æ–¹æ³•, è€Œå¿½ç•¥ä¿®é¥°ç¬¦(private, protected)
+	 * @param object
+	 * @param methodName
+	 * @param parameterTypes
+	 * @param parameters
+	 * @return
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 */
+	public static Object invokeMethod(Object object, String methodName, Class<?> [] parameterTypes,
+			Object [] parameters) throws InvocationTargetException{
+		
+		Method method = getDeclaredMethod(object, methodName, parameterTypes);
+		
+		if(method == null){
+			throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + object + "]");
+		}
+		
+		method.setAccessible(true);
+		
+		try {
+			return method.invoke(object, parameters);
+		} catch(IllegalAccessException e) {
+			System.out.println("ä¸å¯èƒ½æŠ›å‡ºçš„å¼‚å¸¸");
+		} 
+		
+		return null;
+	}
+	
+	/**
+	 * ç›´æ¥è®¾ç½®å¯¹è±¡å±æ€§å€¼, å¿½ç•¥ private/protected ä¿®é¥°ç¬¦, ä¹Ÿä¸ç»è¿‡ setter
+	 * @param object
+	 * @param fieldName
+	 * @param value
+	 */
+	public static void setFieldValue(Object object, String fieldName, Object value){
+		Field field = getDeclaredField(object, fieldName);
+		
+		if (field == null)
+			throw new IllegalArgumentException("Could not find field [" + fieldName + "] on target [" + object + "]");
+		
+		makeAccessible(field);
+		
+		try {
+			field.set(object, value);
+		} catch (IllegalAccessException e) {
+			System.out.println("ä¸å¯èƒ½æŠ›å‡ºçš„å¼‚å¸¸");
+		}
+	}
+	
+	/**
+	 * ç›´æ¥è¯»å–å¯¹è±¡çš„å±æ€§å€¼, å¿½ç•¥ private/protected ä¿®é¥°ç¬¦, ä¹Ÿä¸ç»è¿‡ getter
+	 * @param object
+	 * @param fieldName
+	 * @return
+	 */
+	public static Object getFieldValue(Object object, String fieldName){
+		Field field = getDeclaredField(object, fieldName);
+		
+		if (field == null)
+			throw new IllegalArgumentException("Could not find field [" + fieldName + "] on target [" + object + "]");
+		
+		makeAccessible(field);
+		
+		Object result = null;
+		
+		try {
+			result = field.get(object);
+		} catch (IllegalAccessException e) {
+			System.out.println("ä¸å¯èƒ½æŠ›å‡ºçš„å¼‚å¸¸");
+		}
+		
+		return result;
+	}
 }

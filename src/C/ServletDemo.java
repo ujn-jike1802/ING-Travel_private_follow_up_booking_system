@@ -26,7 +26,7 @@ import M.DemoDao;
 @WebServlet(urlPatterns= {"*.do"})
 public class ServletDemo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DemoDao DAO=new DemoDAOJdbcimpl();       //定义DAO
+	private DemoDao DAO=new DemoDAOJdbcimpl();       //锟斤拷锟斤拷DAO
 	
     
     /**
@@ -56,7 +56,7 @@ public class ServletDemo extends HttpServlet {
 				String methodName=servletPath.substring(1);
 				methodName= methodName.substring(0,methodName.length()-3);
 				try {
-					//利用反射获取methodName对应的方法
+				
 					Method method=getClass().getDeclaredMethod(methodName,HttpServletRequest.class, HttpServletResponse.class );
 					method.invoke(this, request,response);
 				} catch (Exception e) {
@@ -69,6 +69,6 @@ public class ServletDemo extends HttpServlet {
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		String action=request.getParameter("action");
-		out.print("我是demo.do");
+		out.print("鎴戞槸demo.do");
 	}
 }

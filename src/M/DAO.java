@@ -12,10 +12,10 @@ import C.ReflectionUtils;
 
 
 /**
- * ·â×°ÁË»ù±¾µÄCRUDµÄ·½·¨£¬ÒÔ¹©×ÓÀà¼Ì³ĞÊ¹ÓÃ
+ * å°è£…äº†åŸºæœ¬çš„CRUDçš„æ–¹æ³•ï¼Œä»¥ä¾›å­ç±»ç»§æ‰¿ä½¿ç”¨
  * @author yb
- * ²ÉÓÃDBUtils½â¾ö·½°¸
- *<T>  µ±Ç°DAO´¦ÀíµÄÊµÌåÀàµÄÀàĞÍÊÇÀàĞÍ
+ * é‡‡ç”¨DBUtilsè§£å†³æ–¹æ¡ˆ
+ *<T>  å½“å‰DAOå¤„ç†çš„å®ä½“ç±»çš„ç±»å‹æ˜¯ç±»å‹
  */
 public class DAO<T> {
 
@@ -26,12 +26,11 @@ public class DAO<T> {
 	}
 	private QueryRunner queryRunner=new QueryRunner();
 	/**
-	 * ·µ»ØÄ³Ò»¸ö×Ö¶ÎµÄÖµ,»òÕßÊÇÊ¹ÓÃ¾Û¼¯º¯Êı£¬±ÈÈçÓÃ»§Êı  count(*)
+	 * è¿”å›æŸä¸€ä¸ªå­—æ®µçš„å€¼ï¼Œæ¯”å¦‚ï¼šè¿”å›æŸä¸€æ¡è®°å½•çš„CustomerName,æˆ–è€…æ˜¯ä½¿ç”¨èšé›†å‡½æ•°ï¼Œæ¯”å¦‚ä¼šå‘˜æ•°  count(*)
 	 * @param sql
 	 * @param args
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public  <E> E getForValue(String  sql, Object...args) {
 		Connection connection=null;
 		try {
@@ -47,7 +46,7 @@ public class DAO<T> {
 	}
 	
 	/**
-	 * ·µ»ØTËù¶ÔÓ¦µÄList
+	 * è¿”å›Tæ‰€å¯¹åº”çš„List
 	 * @param sql
 	 * @param args
 	 * @return
@@ -67,7 +66,7 @@ public class DAO<T> {
 	}
 	
 	/**
-	 * ·µ»Ø¶ÔÓ¦µÄTµÄÒ»¸öÊµÌåÀàµÄ¶ÔÏó
+	 * è¿”å›å¯¹åº”çš„Tçš„ä¸€ä¸ªå®ä½“ç±»çš„å¯¹è±¡
 	 * @param sql
 	 * @param args
 	 * @return
@@ -87,9 +86,9 @@ public class DAO<T> {
 	}
 	
 	/**
-	 * ·â×°ÁËinsert,delete,update²Ù×÷
-	 * @param sql  SQLÓï¾ä
-	 * @param args Ìî³äSQLÓï¾äÖĞµÄµãÎ»·ûµÄ²ÎÊıÖµ
+	 * å°è£…äº†insert,delete,updateæ“ä½œ
+	 * @param sql  SQLè¯­å¥
+	 * @param args å¡«å……SQLè¯­å¥ä¸­çš„ç‚¹ä½ç¬¦çš„å‚æ•°å€¼
 	 */
 	public void update(String sql,  Object...args) {
 		Connection connection=null;

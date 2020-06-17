@@ -8,13 +8,13 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mysql.jdbc.Connection;
 
 /**
- * jdbcµÄ¹¤¾ßÀà
+ * jdbcUtilså·¥å…·
  * @author Yangb
  *
  */
 public class JdbcUtils {
 	/**
-	 * ÊÍ·ÅconnÁ¬½Ó
+	 * 
 	 * @param connection
 	 */
    public static void releaseConnection(java.sql.Connection connection) {
@@ -30,11 +30,11 @@ public class JdbcUtils {
    
    private static DataSource dataSource=null;
    static {
-	   //Êı¾İÔ´Ö»ÄÜ±»´´½¨Ò»´Î
+	   //ï¿½ï¿½ï¿½ï¿½Ô´Ö»ï¿½Ü±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 	   dataSource=new ComboPooledDataSource("bookingdemo");
    }
    /**
-    * ·µ»ØÊı¾İÔ´µÄÒ»¸öConnection¶ÔÏó
+    * è·å–æ•°æ®æº
     * @return
     * @throws SQLException 
     */

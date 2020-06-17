@@ -7,10 +7,10 @@ public class DBHelper {
     private static final String PASSWORD="Yangbao";
     private static Connection connection=null;
    
-     //静态代码块，负责加载驱动，只做一次，优先于主方法。
+    
     static {
     	   
-    	try { //加载驱动。
+    	try { 
     		Class.forName(DRIVER);
     		
     	}catch(Exception ex){
