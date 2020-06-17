@@ -1,44 +1,32 @@
 package M;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import com.mysql.jdbc.Connection;
 
-/**
- * jdbcUtils工具
- * @author Yangb
- *
- */
 public class JdbcUtils {
-	/**
-	 * 
-	 * @param connection
-	 */
-   public static void releaseConnection(java.sql.Connection connection) {
-	   try{
-		   if (connection!=null) {
-		   connection.close();
-	        }
-		 }catch(SQLException e) {
-			 e.printStackTrace();
-		 }
-	   
-   }
-   
-   private static DataSource dataSource=null;
-   static {
-	   //����Դֻ�ܱ�����һ��
-	   dataSource=new ComboPooledDataSource("bookingdemo");
-   }
-   /**
-    * 获取数据源
-    * @return
-    * @throws SQLException 
-    */
-   public static java.sql.Connection getConnection() throws SQLException {
-	   return dataSource.getConnection();
-   }
+
+	public static void releaseConnection(Connection connection) {
+		if(connection!=null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private static DataSource dataSource=null;
+	
+	static {
+		dataSource=new ComboPooledDataSource("mvcdemo");
+	}
+	
+	public static Connection getConnection() throws SQLException {
+		return dataSource.getConnection();
+	}
 }
