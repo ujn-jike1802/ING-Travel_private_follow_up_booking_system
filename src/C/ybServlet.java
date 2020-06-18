@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import M.CriteriaDemo;
 import M.PageMan;
 import M.UserDAO;
+import M.attractions;
 import M.classDemo;
 import M.DemoDAOJdbcimpl;
 import M.DemoDao;
@@ -27,7 +28,7 @@ import M.DemoDao;
 @WebServlet(urlPatterns= {"*.yb"})
 public class ybServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UserDAO DAO=new DemoDAOJdbcimpl();       //DAO
+	private DemoDao DAO=new DemoDAOJdbcimpl();       //DAO
 	
     
     /**
@@ -76,10 +77,28 @@ public class ybServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); 
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		String action=request.getParameter("type");
-		
+		PageMan pageman=new PageMan();
+		 int currPage;
+		if(request.getParameter("page")==null || request.getParameter("page").matches("[0-9]+")==false){
+			 currPage=1;
+	    	  
+	       }
+		else{
+	    	 currPage=Integer.parseInt(request.getParameter("page"));
+	    	 currPage=currPage<1?1:currPage;
+	       }
+		attractions att=new attractions();
+		att=DAO.getById(currPage); 
 	}
 	protected void photographer(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8"); 
+	    response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String action=request.getParameter("type");
+		
+		
+	}
+	protected void pieces(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();

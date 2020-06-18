@@ -24,4 +24,5 @@ import M.User;
 		update(sql,user.getUsername(),user.getPassword(),user.getGender(),user.getPhonenumber());
 		
 	}
+	
 }

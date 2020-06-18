@@ -6,22 +6,20 @@ import java.util.List;
 
 
 
-public class DemoDAOJdbcimpl extends DAO<User> implements UserDAO{
+public class DemoDAOJdbcimpl extends DAO<attractions> implements DemoDao{
 
-	public User get(String username,String password) {
-		String sql="select id,username,password,gender,phonenumber from test where username=? and password=?";
-		return get(sql,username,password);
-	}
 	@Override
-	public long getCountWithName(String name) {
-		String sql="select count(*) from test where username=?";
-		return getForValue(sql, name);
-	}
-	
-	@Override
-	public void add(User user) {
-		String sql="insert into test(username,password,gender,phonenumber) values(?,?,?,?)";
-		update(sql,user.getUsername(),user.getPassword(),user.getGender(),user.getPhonenumber());
+	public void demo(classDemo user) {
+		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public attractions getById(int currPage) {
+		// TODO Auto-generated method stub
+		String sql="select attname attsrc_img attsrc_img1 attsrc_img2 attsrc_img3 glname1 glname2 glname3 atttype opentime lasting seasons attlevels from attractions where id=?";
+		return get(sql,currPage);
+	}
+   
+	
 }
