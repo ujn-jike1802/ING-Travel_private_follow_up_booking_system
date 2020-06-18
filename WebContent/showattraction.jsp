@@ -48,6 +48,41 @@
     .port-5.effect-2 .text-desc{padding: 10px;}
 
 }
+/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px solid #ff6500;
+		padding: 5px 7px;
+		color: #ff6500;
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+	/*设置鼠标经过时 a 标签的css样式*/
+	.page-normal a:hover{
+		background-color: #ffbe94;
+	}
+	
+	/*设置整个div的css样式,该样式主要用于设置网页内的省略号 …… 的样式，并且同时设置内容居中显示*/
+	.page-normal{
+		color: #ff6500;
+		text-align: center;
+	}
+	
+	/*设置当前页面的css样式*/
+	.page-normal .page-current{
+		color: #ffffff;
+		background-color: #ff6500;
+	}
+	
+	/*设置左单括号 < 的css样式*/
+	.page-normal .page-prev{
+		color: #ffe3c6;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px solid #ff6500;
+		padding: 5px 7px;
+	}
     </style>
 </head>
 
@@ -99,7 +134,7 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    人文社区 <small><a href="Natural.html" title="">自然风景</a></small>
+                    人文社区 
                 </h1>
                     
             </div>
@@ -212,16 +247,22 @@
         </div>
     </div>
     
-    	<div style="text-align:center; margin:20px;">
+  
         	    
-        		
-                            首页	      上一页        当前页数   一共多少页   下一页      尾页
-               <form method="POST" action="selectAll.yb?do=no">
+
+
+<div class="page-normal">
+	   <a href="#">首页</a>&nbsp;&nbsp;
+	   <a href="#">&lt;</a> &nbsp;&nbsp;
+	<span class="page-current">1</span>
+	   <a href="#">&gt;</a>&nbsp;&nbsp;
+	    <a href="#">尾页</a>
+	   <form method="POST" action="" style="margin:20px;">
                  <input type="number" name="page" min="1"  max=7 step="1" />
                  <input type="submit" value="跳转"/>
                 </form>
-        		</div>
-    
+</div>
+        		
     <div class="row clearfix" style="background-image: url(images/wood1.png);
   ">
         <div class="col-md-12 column" align="center">
