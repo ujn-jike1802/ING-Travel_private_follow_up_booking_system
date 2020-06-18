@@ -26,7 +26,7 @@ import M.DemoDao;
 @WebServlet(urlPatterns= {"*.yb"})
 public class ybServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DemoDao DAO=new DemoDAOJdbcimpl();       //����DAO
+	private DemoDao DAO=new DemoDAOJdbcimpl();       //DAO
 	
     
     /**
@@ -70,5 +70,12 @@ public class ybServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		String action=request.getParameter("action");
 		out.print("我是demo.yb");
+	}
+	protected void attraction_show(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8"); 
+	    response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String action=request.getParameter("type");
+		
 	}
 }
