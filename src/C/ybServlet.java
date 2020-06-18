@@ -89,6 +89,8 @@ public class ybServlet extends HttpServlet {
 	       }
 		attractions att=new attractions();
 		att=DAO.getById(currPage); 
+		int attnumber=DAO.getAttNumber();
+		
 	}
 	protected void photographer(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 
