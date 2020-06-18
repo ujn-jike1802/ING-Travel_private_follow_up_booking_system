@@ -25,4 +25,10 @@ public class DemoDAOJdbcimpl extends DAO<User> implements UserDAO{
 		
 	}
 
+	@Override
+	public void att_show() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
