@@ -14,4 +14,10 @@ public class DemoDAOJdbcimpl extends DAO<classDemo> implements DemoDao{
 		
 	}
 
+	@Override
+	public void att_show() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
