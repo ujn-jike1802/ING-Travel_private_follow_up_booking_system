@@ -1,4 +1,6 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -123,17 +125,17 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
                        
 
                    
-                         <li>
+                          <li>
                              <a href="ComSen.html"><span class="block" style="color: white;">旅游贴士</span></a>
                         </li>
                         <li>
-                             <a href="Humanities.html"><span class="block" style="color: white;">景点推荐</span></a>
+                             <a href="showattraction.jsp"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
-                             <a href="Gay.html"><span class="block" style="color: white;">预约摄影</span></a>
+                             <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
                         </li>
                         <li>
-                             <a href="Form.html"><span class="block" style="color: white;" >信息反馈</span></a>
+                             <a href="Form.jsp"><span class="block" style="color: white;" >信息反馈</span></a>
                         </li>
                         
                     </ul>
@@ -231,7 +233,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
                             <a href="first.html">首页</a>
                         </li>
                         <li  class="active">
-                            <a href="#">组队行动</a>
+                            <a href="#">预约摄影</a>
                         </li>
                     </ul>
             <div class="row clearfix">

@@ -45,18 +45,17 @@
                     <ul class="nav navbar-nav navbar-right navblock">
                        
 
-                    
-                         <li>
+                      <li>
                              <a href="ComSen.html"><span class="block" style="color: white;">旅游贴士</span></a>
                         </li>
                         <li>
-                             <a href="Humanities.html"><span class="block" style="color: white;">景点推荐</span></a>
+                             <a href="showattraction.jsp"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
-                             <a href="Gay.html"><span class="block" style="color: white;">预约摄影</span></a>
+                             <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
                         </li>
                         <li>
-                             <a href="Form.html"><span class="block" style="color: white;" >信息反馈</span></a>
+                             <a href="Form.jsp"><span class="block" style="color: white;" >信息反馈</span></a>
                         </li>
                     </ul>
                 </div>      
@@ -143,7 +142,7 @@
                         </li>
 
                         <li class="active">
-                            <a href="Form.html">摄影预约</a>
+                            <a href="Form.jsp">信息反馈</a>
                         </li>
                     </ul>
             <div class="row clearfix">

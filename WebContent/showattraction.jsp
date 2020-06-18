@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 	<link rel="shortcut icon" href="images/humanities.svg" type="image/x-icon">
-	<title>Humanities</title> 
+	<title>Attractions</title> 
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -105,13 +105,13 @@
                              <a href="ComSen.html"><span class="block" style="color: white;">旅游贴士</span></a>
                         </li>
                         <li>
-                             <a href="Humanities.html"><span class="block" style="color: white;">景点推荐</span></a>
+                             <a href="showattraction.jsp"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
-                             <a href="Gay.html"><span class="block" style="color: white;">预约摄影</span></a>
+                             <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
                         </li>
                         <li>
-                             <a href="Form.html"><span class="block" style="color: white;" >信息反馈</span></a>
+                             <a href="Form.jsp"><span class="block" style="color: white;" >信息反馈</span></a>
                         </li>
                         
                     </ul>
@@ -274,7 +274,7 @@
                             <a href="first.html">首页</a>
                         </li>
                         <li  class="active">
-                            <a href="#">人文社区</a>
+                            <a href="#">景点推荐</a>
                         </li>
                     </ul>
             <div class="row clearfix">
