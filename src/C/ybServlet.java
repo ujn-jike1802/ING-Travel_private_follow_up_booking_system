@@ -15,10 +15,14 @@ import javax.servlet.http.HttpSession;
 
 
 import M.CriteriaDemo;
+import M.CriteriaPhotographer;
 import M.PageMan;
 import M.UserDAO;
 import M.attractions;
 import M.classDemo;
+import M.photographer;
+import M.photographerdao;
+import M.photographerimpl;
 import M.DemoDAOJdbcimpl;
 import M.DemoDao;
 
@@ -29,7 +33,7 @@ import M.DemoDao;
 public class ybServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DemoDao DAO=new DemoDAOJdbcimpl();       //DAO
-	
+	private photographerdao Dao=new photographerimpl();
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -77,7 +81,7 @@ public class ybServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); 
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		 int currPage;
+		int currPage;
 		if(request.getParameter("page")==null || request.getParameter("page").matches("[0-9]+")==false){
 			 currPage=1;
 	    	  
@@ -94,19 +98,13 @@ public class ybServlet extends HttpServlet {
 		request.setAttribute("currPage",currPage);
 		request.getRequestDispatcher("showattraction.jsp").forward(request, response);
 	}
-	protected void photographer(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	protected void photographer_and_pieces(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		String action=request.getParameter("type");
-		
-		
-	}
-	protected void pieces(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
-	    response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out=response.getWriter();
-		String action=request.getParameter("type");
-		
+		String ph_name=request.getParameter("ph_name");
+		CriteriaPhotographer pher=new CriteriaPhotographer(ph_name);
+		int pher_number=(int)Dao.getPhNumber(pher);
+		int id=(int)Dao.getPhid(pher);
 	}
 }

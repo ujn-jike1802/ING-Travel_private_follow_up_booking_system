@@ -6,7 +6,7 @@ import java.util.List;
 
 
 
-public class DemoDAOJdbcimpl extends DAO<attractions> implements DemoDao{
+public class DemoDAOJdbcimpl extends DAO<attractions>  implements DemoDao{
 
 	@Override
 	public void demo(classDemo user) {

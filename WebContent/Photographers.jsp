@@ -110,6 +110,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 </head>
 
 <body>
+
         <div class="container" style="background-image: url(images/wood1.png);">
     <div class="row clearfix">
         <div class="col-md-12 column">
