@@ -24,11 +24,4 @@ public class DemoDAOJdbcimpl extends DAO<User> implements UserDAO{
 		update(sql,user.getUsername(),user.getPassword(),user.getGender(),user.getPhonenumber());
 		
 	}
-
-	@Override
-	public void att_show() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

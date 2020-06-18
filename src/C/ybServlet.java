@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import M.CriteriaDemo;
 import M.PageMan;
+import M.UserDAO;
 import M.classDemo;
 import M.DemoDAOJdbcimpl;
 import M.DemoDao;
@@ -26,7 +27,7 @@ import M.DemoDao;
 @WebServlet(urlPatterns= {"*.yb"})
 public class ybServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DemoDao DAO=new DemoDAOJdbcimpl();       //DAO
+	private UserDAO DAO=new DemoDAOJdbcimpl();       //DAO
 	
     
     /**
