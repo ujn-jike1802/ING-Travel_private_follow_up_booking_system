@@ -12,5 +12,8 @@ public class CriteriaPhotographer {
 	public String getUsername() {
 		return  ph_username==null?"%%":"%"+ ph_username+"%";
 	}
+	public void setUsername(String name) {
+	     this.ph_username=name;
+	}
 	
 }
