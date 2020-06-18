@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="M.attractions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,8 +86,15 @@
 	}
     </style>
 </head>
-
 <body>
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
+    int currPage=(int)request.getAttribute("currPage");
+    attractions att=(attractions)request.getAttribute("att");
+    int attnumber=(int)request.getAttribute("attnumber");
+%>
+
    <div class="container" style="background-image: url(images/wood1.png); margin-bottom: 0;">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -105,7 +113,7 @@
                              <a href="ComSen.html"><span class="block" style="color: white;">旅游贴士</span></a>
                         </li>
                         <li>
-                             <a href="showattraction.jsp"><span class="block" style="color: white;">景点推荐</span></a>
+                             <a href="attraction_show.yb?page='<%=currPage%>'"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
                              <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
@@ -134,14 +142,21 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    人文社区 
+                  
+                  <%if(att.getAtttype().equals("1")){
+                    %>人文社区<%
+                  } 
+                  else{
+                     %>自然风景<%
+                  }
+                  %> 
                 </h1>
                     
             </div>
             <div class="row clearfix">
                 <div class="col-md-6 column">
-                    <img alt="140x140" src="images/luanzhougucheng.jpg" style="width: 100%; margin:5px;"/> 
-                    <address align="center"> <strong>中国河北省唐山市滦州市滦州古城</strong> </address>
+                    <img alt="140x140" src="<%=att.getAttsrc_img() %>" style="width: 100%; margin:5px;"/> 
+                    <address align="center"> <strong><%=att.getAttname() %></strong> </address>
                    <table class="table table-condensed table-striped">
                 <tbody>
                     <tr>
@@ -149,14 +164,14 @@
                             开放时间:
                         </td>
                         <td>
-                            全天
+                     <%=att.getOpentime() %>
                         </td>
                         
                         <td>
                             建议游玩时长:
                         </td>
                         <td>
-                 3小时
+                     <%=att.getLasting() %>
                         </td>
                     </tr>
                     
@@ -165,13 +180,13 @@
                             适合游玩季节:
                         </td>
                         <td>
-                            四季皆可
+                            <%=att.getSeasons() %>
                         </td>
                         <td>
                             景区等级:
                         </td>
                         <td>
-                 AAAA
+                 <%=att.getAttlevels() %>
                         </td>
                     </tr>
                 </tbody>
@@ -182,8 +197,8 @@
                         <div class="col-md-12">
                             
                 <video width="90%" controls>
-                 <source src="movie.mp4" type="video/mp4">
-                 <source src="movie.ogg" type="video/ogg">
+                 <source src="<%=att.getAttvideo() %>" type="video/mp4">
+                 <source src="<%=att.getAttvioog() %>" type="video/ogg">
                 您的浏览器不支持 HTML5 video 标签。
                 </video>
                         </div>
@@ -191,10 +206,10 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <img alt="300x200"class="pic1" src="images/guchengshaokao.jpg"style="width: 90%; margin:auto;" />
+                                <img alt="300x200"class="pic1" src="<%=att.getAttsrc_img1() %>" style="width: 90%; margin:auto;" />
                                 <div class="caption"align="center">
                                     <h3>
-                                        攻略一：烧烤
+                                        攻略一：<%=att.getGlname1() %>
                                     </h3>
                                     
                                 </div>
@@ -202,20 +217,20 @@
                         </div>
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <img alt="300x200"class="pic2" src="images/guchengdengjie.jpg"style="width: 90%; margin:auto;"/>
+                                <img alt="300x200"class="pic2" src="<%=att.getAttsrc_img2() %>"style="width: 90%; margin:auto;"/>
                                 <div class="caption" align="center">
                                     <h3>
-                                        攻略二:灯节
+                                        攻略二:<%=att.getGlname2() %>
                                     </h3>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <img alt="300x200" class="pic3" src="images/guchegnmeishi.jpg"style="width: 90%; margin:auto;"/>
+                                <img alt="300x200" class="pic3" src="<%=att.getAttsrc_img3() %>"style="width: 90%; margin:auto;"/>
                                 <div class="caption" align="center">
                                     <h3>
-                                        攻略三:古城美食
+                                        攻略三:<%=att.getGlname3() %>
                                     </h3>
                                 </div>
                             </div>
@@ -252,16 +267,29 @@
 
 
 <div class="page-normal">
-	   <a href="#">首页</a>&nbsp;&nbsp;
-	   <a href="#">&lt;</a> &nbsp;&nbsp;
-	<span class="page-current">1</span>
-	   <a href="#">&gt;</a>&nbsp;&nbsp;
-	    <a href="#">尾页</a>
+	   <a href="attraction_show.yb?page=1">首页</a>&nbsp;&nbsp;
+	   <%if(currPage>1) {
+		   %>
+		   <a href="attraction_show.yb?page="<%=currPage-1 %>"">&lt;</a> &nbsp;&nbsp;
+		   <%
+	   }
+	   %>
+	    
+	<span class="page-current"><%=currPage %></span>
+	<%if(currPage<attnumber) {
+		   %>
+		   <a href="attraction_show.yb?page="<%=currPage+1 %>"">&gt;</a> &nbsp;&nbsp;
+		   <%
+	   }
+	   %>
+	    <a href="attraction_show.yb?page="<%=attnumber %>"">尾页</a>
 	   <form method="POST" action="" style="margin:20px;">
-                 <input type="number" name="page" min="1"  max=7 step="1" />
+                 <input type="number" name="page" min="1"  max="<%=attnumber %>" step="1" />
                  <input type="submit" value="跳转"/>
                 </form>
 </div>
+        		
+        		
         		
     <div class="row clearfix" style="background-image: url(images/wood1.png);
   ">
@@ -274,7 +302,7 @@
                             <a href="first.html">首页</a>
                         </li>
                         <li  class="active">
-                            <a href="#">景点推荐</a>
+                            <a href="attraction_show.yb?page='<%=currPage%>' ">景点推荐</a>
                         </li>
                     </ul>
             <div class="row clearfix">

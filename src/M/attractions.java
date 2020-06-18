@@ -4,26 +4,8 @@ public class attractions {
 	public attractions(){
 		
 	}
-	public attractions(int att_idid, String attname, String attsrc_img, String attsrc_img1, String attsrc_img2,
-			String attsrc_img3, String glname1, String glname2, String glname3, String atttype, String opentime,
-			String lasting, String seasons, String attlevels) {
-		super();
-		this.att_id = att_id;
-		this.attname = attname;
-		this.attsrc_img = attsrc_img;
-		this.attsrc_img1 = attsrc_img1;
-		this.attsrc_img2 = attsrc_img2;
-		this.attsrc_img3 = attsrc_img3;
-		this.glname1 = glname1;
-		this.glname2 = glname2;
-		this.glname3 = glname3;
-		this.atttype = atttype;
-		this.opentime = opentime;
-		this.lasting = lasting;
-		this.seasons = seasons;
-		this.attlevels = attlevels;
-	}
-	private int att_id;
+	
+	private int id;
 	private String attname;
 	private String attsrc_img;
 	private String attsrc_img1;
@@ -37,11 +19,46 @@ public class attractions {
 	private String lasting;
 	private String seasons;
 	private String attlevels;
+	private String attvideo;
+	public attractions(int id, String attname, String attsrc_img, String attsrc_img1, String attsrc_img2,
+			String attsrc_img3, String glname1, String glname2, String glname3, String atttype, String opentime,
+			String lasting, String seasons, String attlevels, String attvideo, String attvioog) {
+		super();
+		this.id = id;
+		this.attname = attname;
+		this.attsrc_img = attsrc_img;
+		this.attsrc_img1 = attsrc_img1;
+		this.attsrc_img2 = attsrc_img2;
+		this.attsrc_img3 = attsrc_img3;
+		this.glname1 = glname1;
+		this.glname2 = glname2;
+		this.glname3 = glname3;
+		this.atttype = atttype;
+		this.opentime = opentime;
+		this.lasting = lasting;
+		this.seasons = seasons;
+		this.attlevels = attlevels;
+		this.attvideo = attvideo;
+		this.attvioog = attvioog;
+	}
+	public String getAttvideo() {
+		return attvideo;
+	}
+	public void setAttvideo(String attvideo) {
+		this.attvideo = attvideo;
+	}
+	public String getAttvioog() {
+		return attvioog;
+	}
+	public void setAttvioog(String attvioog) {
+		this.attvioog = attvioog;
+	}
+	private String attvioog;
 	public int getId() {
-		return att_id;
+		return id;
 	}
 	public void setId(int id) {
-		this.att_id = id;
+		this.id = id;
 	}
 	public String getAttname() {
 		return attname;

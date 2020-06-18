@@ -9,5 +9,5 @@ public interface DemoDao {
 	//获取景点
 	public attractions getById(int currPage);
 	//获取景点数量
-	public int getNumber();
+	public long getAttNumber();
 }

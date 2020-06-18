@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>feedback</title>
+<title>recommend</title>
 <link rel="stylesheet" href="css/cloudstyle.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,7 +22,7 @@
 <body>
 <div class="container" style="background-image: url(images/wood1.png);">
 <!-- 代码部分begin -->
-<h1 class="header-w3ls">User Feedback Form</h1>
+<h1 class="header-w3ls">User Recommend Form</h1>
 <div class="content-w3ls" style="margin-bottow:50px;">
 <h2 align="center">
 

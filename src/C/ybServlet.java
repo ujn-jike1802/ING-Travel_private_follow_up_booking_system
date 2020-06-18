@@ -77,7 +77,6 @@ public class ybServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); 
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		PageMan pageman=new PageMan();
 		 int currPage;
 		if(request.getParameter("page")==null || request.getParameter("page").matches("[0-9]+")==false){
 			 currPage=1;
@@ -89,8 +88,11 @@ public class ybServlet extends HttpServlet {
 	       }
 		attractions att=new attractions();
 		att=DAO.getById(currPage); 
-		int attnumber=DAO.getAttNumber();
-		
+		int attnumber=(int)DAO.getAttNumber();
+		request.setAttribute("att",att);
+		request.setAttribute("attnumber",attnumber);
+		request.setAttribute("currPage",currPage);
+		request.getRequestDispatcher("showattraction.jsp").forward(request, response);
 	}
 	protected void photographer(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 

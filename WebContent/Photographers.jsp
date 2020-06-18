@@ -129,7 +129,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
                              <a href="ComSen.html"><span class="block" style="color: white;">旅游贴士</span></a>
                         </li>
                         <li>
-                             <a href="showattraction.jsp"><span class="block" style="color: white;">景点推荐</span></a>
+                             <a href="attraction_show.yb?page=1"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
                              <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
