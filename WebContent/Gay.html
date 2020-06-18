@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/first.css">
+    <link rel="stylesheet" type="text/css" href="css/graphers.css">
     <style type="text/css" media="screen">
 .single-member{width: 280px; float: left; margin: 30px 2.5%; background-color: #fff; text-align: center; position: relative;}
         .single-member{width: 280px; float: left; margin: 30px 2.5%; background-color: #fff; text-align: center; position: relative;}
@@ -43,7 +44,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
     margin-top: 40px;
 }
 .parent {
-    position: fixed;
+    position: relative;
 }
 .search {
     width: 300px;
@@ -65,6 +66,44 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
     outline: none;
     cursor: pointer;
 }
+
+/* effect-5 css */
+.port-5{float: left; width: 100%; position: relative; overflow: hidden; text-align: center; border: 4px solid rgba(255, 255, 255, 0.9); overflow: visible;}
+
+.port-5.effect-1{z-index: 9;}
+.port-5.effect-1 img{transition: 0.5s;}
+.port-5.effect-1:hover img{transform: scale(0.5) translateX(-100%); position: relative; z-index: 9; border: 6px solid rgba(255, 255, 255, 0.9);}
+.port-5.effect-1 .text-desc{transform: translateX(100%); opacity: 0; padding: 40px 20px 20px 90px; transition: 0.5s;}
+.port-5.effect-1:hover .text-desc{transform: translateX(0px); opacity: 1;}
+
+.port-5.effect-2{z-index: 10;}
+.port-5.effect-2 img{transition: 0.5s; transform: none);}
+.port-5.effect-2:hover img{transform: scale(0.5) translateY(100%); position: relative; z-index: 9; border: 6px solid rgba(255, 255, 255, 0.9);}
+.port-5.effect-2 .text-desc{transform: translateY(-100%); opacity: 0; padding: 20px; transition: 0.5s;}
+.port-5.effect-2:hover .text-desc{transform: translateY(0px); opacity: 1;}
+
+.port-5.effect-3 img{transition: 0.5s;}
+.port-5.effect-3:hover img{transform: scale(0.5) translateX(100%); position: relative; z-index: 9; border: 6px solid rgba(255, 255, 255, 0.9);}
+.port-5.effect-3 .text-desc{transform: translateX(-100%); opacity: 0; padding: 40px 90px 20px 20px; transition: 0.5s;}
+.port-5.effect-3:hover .text-desc{transform: translateX(0px); opacity: 1;}
+/* effect-5 css end */
+
+/*= Media Screen CSS
+==================== */
+@media only screen and (max-width: 1090px){
+	ul{width: 340px; margin: 0 auto;}
+	li{width: 100%; margin: 20px 0;}
+	.port-5.effect-1 {z-index: 19;}
+}
+
+@media only screen and (max-width: 360px){
+	ul{width: 300px;}
+	.text-desc{padding: 7px;}
+	.port-5.effect-1 .text-desc{padding: 13px 20px 20px 90px;}
+	.port-5.effect-2 .text-desc{padding: 10px;}
+	.port-5.effect-3 .text-desc{padding: 16px 90px 20px 20px;}
+}
+/*= Media Screen CSS End
     </style>
 </head>
 
@@ -118,24 +157,67 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
             <div class="clouds_three"></div>
        
         <div class="row clearfix">
-        <div class="col-md-12 column" style="align:center;">
-                    <div class="single-member effect-6">
-                           <div class="member-image">
-                            <img src="images/member_270x210.jpg" alt="Member">
-                           </div>
-                             <div class="member-info"align="center">
-                             <h3>导游</h3>
-                             <p style="margin-top: 9px;">时间</p>
-                             <p>地点</p>
-                             <p>人数</p>
-                             <div class="social-touch icon-colored">
-                             <button type="submit">预约</button>
-                             </div>
-                           </div>
+        <div class="col-md-12 column" style="text-align:center;">
+                   <!-- 代码部分 begin -->
+           <div class="container2" align="center">
+                   <!-- Team members structure start -->
+	               <div class="team-members row">
+		           <div class="single-member effect-1">
+		         	<div class="member-image">
+					<img src="images/member_140x145.jpg" alt="Member">
+					</div>
+						<div class="member-info">
+						<h3>Sophia</h3>
+						<h5>ShowGilr</h5>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div class="social-touch">
+					<a href="#"><img src="images/yuyuea.png"></a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+<!-- Team members structure start -->
+</div>
+<!-- 代码部分end -->
                    </div>  
              
        </div>
+        
+       <div class="row clearfix"  style="margin:20px 20px 20px 0px;">
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+				
+				<div class="port-5 effect-1">
+		                	<div class="image-box">
+		                    	<img src="images/img-1.jpg" alt="Image-1">
+		                    </div>
+		                    <div class="text-desc">
+		                    	<h3>Your Title</h3>
+		                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		                    	<a href="#" class="btn">Learn more</a>
+		                    </div>
+		                </div>
+				</div>
+				<div class="col-md-6 column">
+				<div class="port-5 effect-1">
+		                	<div class="image-box">
+		                    	<img src="images/img-1.jpg" alt="Image-1">
+		                    </div>
+		                    <div class="text-desc">
+		                    	<h3>Your Title</h3>
+		                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		                    	<a href="#" class="btn">Learn more</a>
+		                    </div>
+		                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+       
        </div>
+      
        
        
     <div class="row clearfix" style="background-image: url(images/wood1.png);
