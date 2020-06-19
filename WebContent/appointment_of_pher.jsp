@@ -18,6 +18,13 @@
 		  return flag;
 	  });
   });
+  $(function(){
+	  $(".order").click(function(){
+		  var name=$(this).parent().parent().find("td:eq(1)").text();
+		  var flag=confirm("确定要接受"+name+"的预约吗?");
+		  return flag;
+	  });
+  });
 </script>
 </head>
 <body>
@@ -66,8 +73,8 @@
                  <%if(or.getStatus().equals("0")){ 
                 	 
                 	 %>
-                	   <td><a href='delete_from_pher.yb?id=<%=or.getOrder_id()%>'>拒绝</a></td>
-                       <td><a href='update_from_pher.yb?id=<%=or.getOrder_id()%>'>接受</a></td>
+                	   <td><a href='delete_from_pher.yb?id=<%=or.getOrder_id()%>'class="delete">拒绝</a></td>
+                       <td><a href='update_from_pher.yb?id=<%=or.getOrder_id()%>'class="order">接受</a></td>
                 	 <%
                  }else{
                   %>

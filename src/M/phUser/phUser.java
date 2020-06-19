@@ -1,13 +1,11 @@
-package M;
+package M.phUser;
 
-public class User {
+public class phUser {
 	 private int id;
-     private String username;
-     private String password;
-     private String gender;
-     private String phonenumber;
-
-	
+    private String username;
+    private String password;
+    private String gender;
+    private String phonenumber;
 	public int getId() {
 		return id;
 	}
@@ -38,7 +36,7 @@ public class User {
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-	public User(int id, String username, String password, String gender, String phonenumber) {
+	public phUser(int id, String username, String password, String gender, String phonenumber) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -46,15 +44,15 @@ public class User {
 		this.gender = gender;
 		this.phonenumber = phonenumber;
 	}
-	public User( String username, String password, String gender, String phonenumber) {
+	public phUser() {
+		
+	}
+	public phUser(String username, String password, String gender, String phonenumber) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.gender = gender;
 		this.phonenumber = phonenumber;
 	}
-	public User() {
-		
-	}
-     
+    
 }

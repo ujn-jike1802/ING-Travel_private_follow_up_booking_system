@@ -10,3 +10,8 @@
 aa
 </body>
 </html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="M.phUser.phUser" %>
+<%@ page import="M.phUserdao.*" %>
+ <%@ page import="java.util.*" %>

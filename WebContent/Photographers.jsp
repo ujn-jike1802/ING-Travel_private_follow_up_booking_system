@@ -193,7 +193,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 						<h5>性别:<%=pher.getPh_gender() %></h5>
 						<p> 电话号码<%=pher.getPh_phonenumebr() %></p>
 				<div class="social-touch">
-					<a href="#"><img src="images/yuyuea.png"></a>
+					<a href="addorder.yb?"><img src="images/yuyuea.png"></a>
 				</div>
 			</div>
 		</div>

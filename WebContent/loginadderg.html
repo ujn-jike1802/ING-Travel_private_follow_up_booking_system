@@ -24,20 +24,26 @@
 				</div>
 				<div class="form">
 					<h2>登录账号</h2>
-					<form action="login.xh" method="post">
+					<form action="login.pzl" method="post">
 						<input type="text" name="username" placeholder="用户名" required=" " />
 						<input type="password" name="password" placeholder="密码" required=" " />
+<<<<<<< HEAD:WebContent/loginadderg.html
+						用户<input type="radio" name="ident" placeholder="身份"  value="2" checked style="margin:5px;"/>
+					    摄影师<input type="radio" name="ident" placeholder="身份" value="3" style="margin:5px;"/>
+					    管理员<input type="radio" name="ident" placeholder="身份"  value="1" style="margin:5px;"/>
+=======
 					       用户<input type="radio" name="ident" placeholder="身份" value="user" checked style="margin:5px;"/>
 					    摄影师<input type="radio" name="ident" placeholder="身份" value="photographer" style="margin:5px;"/>
 					    管理员<input type="radio" name="ident" placeholder="身份" value="admin"  style="margin:5px;"/>
+>>>>>>> 922b8156daab0dc407d6e046001e19f2a2ed3dec:WebContent/loginaddreg.html
 						<input type="submit" value="登录" />
 					</form>
 				</div>
 				<div class="form">
 					<h2>创建一个账号</h2>
-					<form action="register.xh" method="post">
+					<form action="register.pzl" method="post">
 						<input type="text" name="username" placeholder="用户名" required=" " />
-						<input type="text" name="password" placeholder="密码" required=" " />
+						<input type="password" name="password" placeholder="密码" required=" " />
 						<input type="text" name="gender" placeholder="性别" required=" " />
 						<input type="text" name="phonenumber" placeholder="电话" required=" " />
 						<input type="submit" value="注册" />
@@ -55,6 +61,8 @@ $('.toggle').click(function(){
 	$('.form').animate({height: "toggle",'padding-top': 'toggle','padding-bottom': 'toggle',opacity: "toggle"}, "slow");
 });
 </script>
-
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
 </body>
 </html>
