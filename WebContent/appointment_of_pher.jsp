@@ -63,7 +63,19 @@
                  <td><%=or.getPh_username()%></td>
                  <td><%=or.getPh_gender()%></td>
                  <td><%=or.getPhonenumber()%></td>
-                 <td><a href='delete_from_pher.yb?id=<%=or.getOrder_id()%>'>unorder</a>
+                 <%if(or.getStatus().equals("0")){ 
+                	 
+                	 %>
+                	   <td><a href='delete_from_pher.yb?id=<%=or.getOrder_id()%>'>拒绝</a></td>
+                       <td><a href='update_from_pher.yb?id=<%=or.getOrder_id()%>'>接受</a></td>
+                	 <%
+                 }else{
+                  %>
+                     <td>已接受</td>
+                  <%
+                 }
+                 %>
+                
                 </tr>
         		 <% 
         	}

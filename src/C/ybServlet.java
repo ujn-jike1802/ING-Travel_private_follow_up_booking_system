@@ -27,6 +27,8 @@ import M.photographer;
 import M.photographerdao;
 import M.photographerimpl;
 import M.pieces;
+import M.piecesdao;
+import M.piecesdaoimpl;
 import M.DemoDAOJdbcimpl;
 import M.DemoDao;
 
@@ -38,6 +40,7 @@ public class ybServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DemoDao DAO=new DemoDAOJdbcimpl();       //DAO
 	private photographerdao Dao=new photographerimpl();
+	private piecesdao pDao=new piecesdaoimpl();
     private orderdao dao=new orderdaoimpl();
     /**
      * @see HttpServlet#HttpServlet()
@@ -102,6 +105,19 @@ public class ybServlet extends HttpServlet {
 		request.setAttribute("currPage",currPage);
 		request.getRequestDispatcher("showattraction.jsp").forward(request, response);
 	}
+	protected void attraction_show_by_name(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8"); 
+	    response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		attractions att=new attractions();
+		att=DAO.getByname(request.getParameter("name"));
+		int attnumber=(int)DAO.getAttNumber();
+		request.setAttribute("att",att);
+		request.setAttribute("attnumber",attnumber);
+		request.setAttribute("currPage",att.getId());
+		request.getRequestDispatcher("showattraction.jsp").forward(request, response);
+	}
+	@SuppressWarnings("null")
 	protected void photographer_and_pieces(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 
 	    response.setContentType("text/html;charset=UTF-8");
@@ -113,10 +129,19 @@ public class ybServlet extends HttpServlet {
 			pher.setUsername("sandy");
 			list=Dao.getCirteriaphers(pher);
 		}
-		List<List<pieces>> piecelist;
+		List<pieces> piece = null;
 		for(int i=0;i<list.size();i++) {
-			
+			List<pieces> temp;
+			photographer p=list.get(i);
+			temp=pDao.getpieces_by_id(p.getPh_id());
+			pieces temp1=temp.get(0);
+			pieces temp2=temp.get(1);
+		    piece.add(temp1);
+		    piece.add(temp2);
 		}
+		request.setAttribute("piece",piece);
+		request.setAttribute("list",list);
+		request.getRequestDispatcher("Photographers.jsp").forward(request, response);
 	}
 	protected void user_appointment(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 
@@ -135,7 +160,9 @@ public class ybServlet extends HttpServlet {
 		  String ph_gender=null;
 		  String action=(String)request.getParameter("do");
 		  HttpSession session=request.getSession(true);
+		  
 		  String id=(String) session.getAttribute("id");
+		  
 		if(action.equals("no")) 
 		{
 	      ph_id=(String) session.getAttribute("ph_id");  
@@ -221,4 +248,12 @@ public class ybServlet extends HttpServlet {
 		    dao.delete_by_Pher(request.getParameter("id"));
 		    response.sendRedirect("appointment_of_pher.jsp");
 	}
+	protected void 	update_from_pher(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+	       String id= request.getParameter("id");
+	       order temp=dao.get_order_by_oid(id);
+	       temp.setStatus("1");
+		   dao.update_by_Pher(temp);
+	       response.sendRedirect("appointment_of_pher.jsp");
+  }
+
 }

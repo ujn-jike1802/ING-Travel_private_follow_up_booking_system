@@ -43,5 +43,17 @@ public class orderdaoimpl  extends DAO<order> implements orderdao {
 		String sql="DELETE FROM order WHERE order_id=?";
 		update(sql,orderid);
 	}
+
+	@Override
+	public order get_order_by_oid(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update_by_Pher(order or) {
+		// TODO Auto-generated method stub
+		
+	}
      
 }

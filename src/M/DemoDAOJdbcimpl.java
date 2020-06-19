@@ -27,6 +27,12 @@ public class DemoDAOJdbcimpl extends DAO<attractions>  implements DemoDao{
 		String sql="SELECT count(*) FROM attractions";
 		return getForValue(sql);
 	}
+
+	@Override
+	public attractions getByname(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
    
 	
 }

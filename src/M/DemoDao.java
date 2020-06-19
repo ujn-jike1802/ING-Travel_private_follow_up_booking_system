@@ -9,6 +9,8 @@ public interface DemoDao {
 	public void demo(classDemo user);
 	//获取景点
 	public attractions getById(int currPage);
+	//获取景点
+    public attractions getByname(String name);
 	//获取景点数量
 	public long getAttNumber();
 }

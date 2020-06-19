@@ -9,6 +9,7 @@
 <head>
 <meta charset="utf-8">
 <title>用户预约信息查询</title>
+
 <script type="text/javascript" src="scripts/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
   $(function(){
@@ -27,6 +28,7 @@
     response.setCharacterEncoding("UTF-8");
     PageMan pageMan=(PageMan)request.getAttribute("pageMan");
 %>
+
 <form action="user_select_appointment.yb?do=yes" method="post">
      <table align="center">
                <tr><td></td><td>Input for fuzzy query</td></tr>
@@ -63,7 +65,16 @@
                  <td><%=or.getPh_username()%></td>
                  <td><%=or.getPh_gender()%></td>
                  <td><%=or.getPhonenumber()%></td>
-                 <td><a href='delete_form_user.yb?id=<%=or.getOrder_id()%>'>unorder</a>
+                 <%if(or.getStatus().equals("0")){
+                	%>
+                	  <td><a href='delete_form_user.yb?id=<%=or.getOrder_id()%>'>unorder</a></td>
+                	<% 
+                 }else{
+                   %>
+                     <td>已接受</td>
+                   <%
+                 }%>
+               
                 </tr>
         		 <% 
         	}

@@ -11,9 +11,8 @@ public class photographerimpl extends DAO<photographer>  implements photographer
 	@Override
 	public List<photographer> getCirteriaphers(CriteriaPhotographer pher) {
 		// TODO Auto-generated method stub
-		String sql="SELECT id,username,gender,phonenumber FROM user WHERE username like ?";
+		String sql="SELECT id,username,gender,phonenumber FROM photographer WHERE username like ?";
 		return getForList(sql,pher.getUsername());
 		}
-
 	
 }

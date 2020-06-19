@@ -15,4 +15,8 @@ public interface orderdao {
 	 public void delete_by_User(String orderid);
 	 //拒绝预约
 	 public void delete_by_Pher(String orderid);
+	 //接受预约
+	 public order get_order_by_oid(String id);
+	 //更新预约表
+	 public void  update_by_Pher(order or);
 }

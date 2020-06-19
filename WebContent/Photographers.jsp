@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+  <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ page import="M.photographer"%>
+    <%@ page import="M.pieces"%>
+    <%@ page import="java.util.ArrayList"%>
+    <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,8 +112,15 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 /*= Media Screen CSS End
     </style>
 </head>
-
 <body>
+<%  
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
+    List<photographer> phers=(List<photographer>)request.getAttribute("list");
+    List<pieces> piece=(List<pieces>)request.getAttribute("piece");
+%>
+   
+    
 
         <div class="container" style="background-image: url(images/wood1.png);">
     <div class="row clearfix">
@@ -148,18 +159,26 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
         
     </div>
               <div class="container1">
-                         <form action="" class="parent">
-                           <input type="text" class="search" placeholder="搜索摄影师">
+                         <form action="photographer_and_pieces.yb" class="parent">
+                           <input type="text" class="search" placeholder="搜索摄影师姓名"  name="ph_name">
                          <input type="button" name="" id="" class="btn">
                         </form>
               </div>
-
+              <a href="apointment_of_user.jsp" style="margin:10px;font-size:18px;">我的预约</a>
     <div class="jumbotron text-center sky">
             <div class="clouds_one"></div>
             <div class="clouds_two"></div>
             <div class="clouds_three"></div>
        
-        <div class="row clearfix">
+       
+       
+       <% if(phers!=null||phers.size()!=0){
+    	   for(int i=0;i<phers.size();i++){
+    		   photographer pher=phers.get(i);
+    		   pieces temp1=piece.get(2*i);
+    		   pieces temp2=piece.get(2*i+1);
+    		   %>
+    		     <div class="row clearfix">
         <div class="col-md-12 column" style="text-align:center;">
                    <!-- 代码部分 begin -->
            <div class="container2" align="center">
@@ -170,9 +189,9 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 					<img src="images/member_140x145.jpg" alt="Member">
 					</div>
 						<div class="member-info">
-						<h3>Sophia</h3>
-						<h5>ShowGilr</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<h3>摄影师:<%=pher.getPh_username() %></h3>
+						<h5>性别:<%=pher.getPh_gender() %></h5>
+						<p> 电话号码<%=pher.getPh_phonenumebr() %></p>
 				<div class="social-touch">
 					<a href="#"><img src="images/yuyuea.png"></a>
 				</div>
@@ -196,10 +215,12 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 		                	<div class="image-box">
 		                    	<img src="images/img-1.jpg" alt="Image-1">
 		                    </div>
-		                    <div class="text-desc">
-		                    	<h3>Your Title</h3>
-		                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-		                    	<a href="#" class="btn">Learn more</a>
+		                    <div class="text-desc" style="color:white;">
+		                    	<h3>作品一</h3>
+		                        <p>拍摄时间:<%=temp1.getPhoto_time() %></p>
+		                        <p>拍摄地点:<%=temp1.getPhoto_place() %></p>
+		                        <p>拍摄主题:<%=temp1.getPhoto_theme() %></p>
+		                    	<a href="attraction_show_by_name.yb?name=<%=temp1.getPhoto_place() %>" class="btn" style="color:white;">了解该地</a>
 		                    </div>
 		                </div>
 				</div>
@@ -208,19 +229,31 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 		                	<div class="image-box">
 		                    	<img src="images/img-1.jpg" alt="Image-1">
 		                    </div>
-		                    <div class="text-desc">
-		                    	<h3>Your Title</h3>
-		                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-		                    	<a href="#" class="btn">Learn more</a>
+		                    <div class="text-desc" style="color:white;">
+		                    	<h3>作品二</h3>
+                                <p>拍摄时间:<%=temp2.getPhoto_time() %></p>
+		                        <p>拍摄地点:<%=temp2.getPhoto_place() %></p>
+		                        <p>拍摄主题:<%=temp2.getPhoto_theme() %></p>
+		                    <a href="attraction_show_by_name.yb?name=<%=temp2.getPhoto_place() %>" class="btn" style="color:white;">了解该地</a>
 		                    </div>
 		                </div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>   
+    		   <%
+    	   }
+       }
+       %>
+      
        
        </div>
       
+       
+       
+       
+       
+       
        
        
     <div class="row clearfix" style="background-image: url(images/wood1.png);
