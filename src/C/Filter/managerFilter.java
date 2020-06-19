@@ -26,6 +26,7 @@ public class managerFilter implements Filter {
 		
 		Object user=session.getAttribute("activeUser");
 		
+		
 		if(user==null) {
 			try {
 				request.getRequestDispatcher("/loginaddreg.html").forward(request,response);

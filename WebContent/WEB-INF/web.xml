@@ -11,13 +11,5 @@
   </welcome-file-list>
 
 
- <filter>
-	<filter-name>AdminFilter</filter-name>
-	<filter-class>C.Filter.managerFilter</filter-class>
-</filter>
-<filter-mapping>
-	<filter-name>AdminFilter</filter-name>
-	<url-pattern>/index.html</url-pattern>
-	<url-pattern>/login.jsp</url-pattern>
-</filter-mapping>
+
 </web-app>
