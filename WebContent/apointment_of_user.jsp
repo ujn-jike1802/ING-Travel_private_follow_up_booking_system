@@ -1,69 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="M.PageMan"%>
+<%@ page import="M.order"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
+<head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>用户预约信息查询</title>
+<script type="text/javascript" src="scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+	  $(".delete").click(function(){
+		  var name=$(this).parent().parent().find("td:eq(1)").text();
+		  var flag=confirm("确定要取消和"+name+"的预约吗?");
+		  return flag;
+	  });
+  });
+</script>
 </head>
 <body>
-     <%
+
+<%
     request.setCharacterEncoding("UTF-8");
     response.setCharacterEncoding("UTF-8");
-    UserDao userDao=new UserDao();
-    int PageSize=(int)request.getAttribute("pageNumber");
-    int currPage=(int)request.getAttribute("currPage");
-     %>
-     <table border="1">
-        <tr>
-           <td>学号</td><td>姓名</td><td>密码</td><td>性别</td><td>年龄</td><td>操作</td>
-        </tr>
-        <%
-          ArrayList<User> li= (ArrayList<User>)request.getAttribute("uslist");
-          if(li!=null && li.size()>0){
-        	 for(int i=0;i<li.size();i++){
-        		 User user=li.get(i);
+    PageMan pageMan=(PageMan)request.getAttribute("pageMan");
+%>
+<form action="user_select_appointment.yb?do=yes" method="post">
+     <table align="center">
+               <tr><td></td><td>Input for fuzzy query</td></tr>
+             <tr><tr><td>ph_Id:</td><td><input type="number" name="ph_id"></td></tr>
+             <tr><td>ph_Username:</td><td><input type="text" name="ph_username"/></td></tr>
+        	 <tr><td>ph_Gender:</td><td><input type="radio" name="ph_gender" value="男"/> 男 <input type="radio" name="ph_gender" value="女"/> 女 </td></tr>
+             <tr><td><input type="submit" value="Query"/></td><td><input type="reset" value="Reset"/></td></tr>
+    </table>
+   </form>
+     <br>
+     <br>
+     <hr>
+     <br>
+     <br>    
+      
+     <%
+        List<order> orders= (List<order>)request.getAttribute("orders");        
+        if( orders!=null&& orders.size()>0){
+        	%>
+        	  <table border="1" cellpadding="10" cellspacing="0" align="center">
+       <tr>
+       <th>ph_ID</th>
+       <th>ph_UserName</th>
+       <th>ph_Gender</th>
+       <th>ph_Phonenumber</th>
+       <th>Operate</th>
+       </tr>
+        	<% 
+        	 for(int i=0;i<orders.size();i++){
+        		 order or=orders.get(i);     	
         		 %>  
         	    <tr>
-                 <td><a href='optionServlet?action=find_by_id&id=<%=user.getId()%>'><%=user.getId() %></a></td>
-                 <td><a href='optionServlet?action=find_by_username&username=<%=user.getUsername()%>'><%=user.getUsername()%></a></td>
-                 <td><%=user.getPassword() %></td>
-                 <td><%=user.getGender() %></td>
-                 <td><%=user.getAge() %></td>
-                 <td><a href='optionServlet?action=update_user&id=<%=user.getId()%>'>修改</a>
-                     &nbsp;
-                     <a href='optionServlet?id=<%=user.getId()%>&&action=delete'>删除</a></td>
+                 <td><%=or.getPh_id()%></td>
+                 <td><%=or.getPh_username()%></td>
+                 <td><%=or.getPh_gender()%></td>
+                 <td><%=or.getPhonenumber()%></td>
+                 <td><a href='delete_form_user.yb?id=<%=or.getOrder_id()%>'>unorder</a>
                 </tr>
         		 <% 
-        	 }
-         } 
-        %>
-        
-     </table>
-             总共有<%=PageSize %>页，当前第<%=currPage %>页 &nbsp;&nbsp;
-           <%
-             if(currPage>1){
-            	 %><a href="optionServlet?action=selectAll&page=<%=currPage-1 %>"> 上一页</a>
+        	}
+        	
+        	if(pageMan!=null){    	
+        		%>
+        		<div style="text-align:center;">
+        		总共有:<%=pageMan.getPageNumber()%>页,当前在:<%=pageMan.getCurrent() %>页。
+        		<%
+                if(pageMan.getCurrent()>1){
+            	 %><a href="user_select_appointment.yb?do=no&page=<%=pageMan.getCurrent()-1 %>"> 上一页</a>
             	 <%
              }
            %>
-             <% if(currPage<PageSize){
+             <% if(pageMan.getCurrent()<pageMan.getPageNumber()){
              %>
-                 <a href="optionServlet?action=selectAll&page=<%=currPage+1 %>">下一页</a>
+                 <a href="user_select_appointment.yb?do=no&page=<%=pageMan.getCurrent()+1 %>">下一页</a>
              <% 
              }
             %>
-
-            	<a href="optionServlet?action=selectAll&page=1">首页</a>      
-                <a href="optionServlet?action=selectAll&page=<%=PageSize %>">尾页</a>
-               <form method="POST" action="optionServlet?action=selectAll">
-                 <input type="number" name="page" min="1" max='<%=PageSize %>' step="1" style="-moz-appearance:textfield;">
-                 <input type="submit" value="跳转">
+            <a href="user_select_appointment.yb?do=no&page=1">首页</a>      
+                <a href="user_select_appointment.yb?do=no&page=<%=pageMan.getPageNumber() %>">尾页</a>
+               <form method="POST" action="user_select_appointment.yb?do=no">
+                 <input type="number" name="page" min="1"  max='<%=pageMan.getPageNumber() %>' step="1" />
+                 <input type="submit" value="跳转"/>
                 </form>
-             <form action="optionServlet?action=find_by_username" method="post">
-                        请输入要查询的用户名:<input type="text" name="username"/><br>
-             <input type="submit" name="submit" value="提交"/>
-             <input type="reset" name="reset" />   
-       </form>
-      
+        		</div>
+        		<%
+        	}
+        }
+     %>
+  </table>
 </body>
 </html>
