@@ -24,4 +24,6 @@ public interface UserDAO {
 	public long getCountWithName(String name);
 	
 	public void add(User user);
+	
+	
 }
