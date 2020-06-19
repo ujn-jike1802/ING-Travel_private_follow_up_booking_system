@@ -17,7 +17,6 @@ import M.CriteriaDemo;
 import M.CriteriaPhotographer;
 import M.Criteriaorder;
 import M.PageMan;
-import M.UserDAO;
 import M.attractions;
 import M.classDemo;
 import M.order;

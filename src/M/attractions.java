@@ -1,10 +1,8 @@
 package M;
 
-public class attractions {
+public class attractions{
 	public attractions(){
-		
 	}
-	
 	private int id;
 	private String attname;
 	private String attsrc_img;
