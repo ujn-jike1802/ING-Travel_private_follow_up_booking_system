@@ -8,7 +8,7 @@ public class photographer {
 	private String	ph_username;
 	private String	ph_password;
 	private String	ph_gender;
-	private String	ph_phonenumebr;
+	private String	ph_phonenumber;
 	public int getPh_id() {
 		return ph_id;
 	}
@@ -33,19 +33,19 @@ public class photographer {
 	public void setPh_gender(String ph_gender) {
 		this.ph_gender = ph_gender;
 	}
-	public String getPh_phonenumebr() {
-		return ph_phonenumebr;
+	public String getPh_phonenumber() {
+		return ph_phonenumber;
 	}
-	public void setPh_phonenumebr(String ph_phonenumebr) {
-		this.ph_phonenumebr = ph_phonenumebr;
+	public void setPh_phonenumber(String ph_phonenumber) {
+		this.ph_phonenumber = ph_phonenumber;
 	}
-	public photographer(int ph_id, String ph_username, String ph_password, String ph_gender, String ph_phonenumebr) {
+	public photographer(int ph_id, String ph_username, String ph_password, String ph_gender, String ph_phonenumber) {
 		super();
 		this.ph_id = ph_id;
 		this.ph_username = ph_username;
 		this.ph_password = ph_password;
 		this.ph_gender = ph_gender;
-		this.ph_phonenumebr = ph_phonenumebr;
+		this.ph_phonenumber = ph_phonenumber;
 	}
 	
 }

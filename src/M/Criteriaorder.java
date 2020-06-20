@@ -4,21 +4,13 @@ public class Criteriaorder {
    public Criteriaorder(){
 	   
    }
-   private String ph_id;
    private String ph_username;
    private String ph_gender;
    
-public Criteriaorder(String id, String username, String gender) {
+public Criteriaorder(String username, String gender) {
 	super();
-	this.ph_id = id;
 	this.ph_username = username;
 	this.ph_gender = gender;
-}
-public String getId() {
-	return ph_id==null?"%%":"%"+ ph_id+"%";
-}
-public void setId(String id) {
-	this.ph_id = id;
 }
 public String getUsername() {
 	return ph_username==null?"%%":"%"+ph_username+"%";

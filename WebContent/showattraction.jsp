@@ -116,7 +116,7 @@
                              <a href="attraction_show.yb?page='<%=currPage%>'"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
-                             <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
+                             <a href="photographer_and_pieces.yb"><span class="block" style="color: white;">预约摄影</span></a>
                         </li>
                         <li>
                              <a href="Form.jsp"><span class="block" style="color: white;" >信息反馈</span></a>
@@ -199,7 +199,7 @@
                 <video width="90%" controls>
                  <source src="<%=att.getAttvideo() %>" type="video/mp4">
                  <source src="<%=att.getAttvioog() %>" type="video/ogg">
-                您的浏览器不支持 HTML5 video 标签。
+                           您的浏览器不支持 HTML5 video 标签。
                 </video>
                         </div>
                     </div>
@@ -270,7 +270,7 @@
 	   <a href="attraction_show.yb?page=1">首页</a>&nbsp;&nbsp;
 	   <%if(currPage>1) {
 		   %>
-		   <a href="attraction_show.yb?page="<%=currPage-1 %>"">&lt;</a> &nbsp;&nbsp;
+		   <a href="attraction_show.yb?page=<%=currPage-1 %>">&lt;</a> &nbsp;&nbsp;
 		   <%
 	   }
 	   %>
@@ -278,12 +278,12 @@
 	<span class="page-current"><%=currPage %></span>
 	<%if(currPage<attnumber) {
 		   %>
-		   <a href="attraction_show.yb?page="<%=currPage+1 %>"">&gt;</a> &nbsp;&nbsp;
+		   <a href="attraction_show.yb?page=<%=currPage+1 %>">&gt;</a> &nbsp;&nbsp;
 		   <%
 	   }
 	   %>
-	    <a href="attraction_show.yb?page="<%=attnumber %>"">尾页</a>
-	   <form method="POST" action="" style="margin:20px;">
+	    <a href="attraction_show.yb?page=<%=attnumber %>">尾页</a>
+	   <form method="POST" action="attraction_show.yb" style="margin:20px;">
                  <input type="number" name="page" min="1"  max="<%=attnumber %>" step="1" />
                  <input type="submit" value="跳转"/>
                 </form>

@@ -32,7 +32,6 @@
 <form action="user_select_appointment.yb?do=yes" method="post">
      <table align="center">
                <tr><td></td><td>Input for fuzzy query</td></tr>
-             <tr><tr><td>ph_Id:</td><td><input type="number" name="ph_id"></td></tr>
              <tr><td>ph_Username:</td><td><input type="text" name="ph_username"/></td></tr>
         	 <tr><td>ph_Gender:</td><td><input type="radio" name="ph_gender" value="男"/> 男 <input type="radio" name="ph_gender" value="女"/> 女 </td></tr>
              <tr><td><input type="submit" value="Query"/></td><td><input type="reset" value="Reset"/></td></tr>
@@ -64,10 +63,10 @@
                  <td><%=or.getPh_id()%></td>
                  <td><%=or.getPh_username()%></td>
                  <td><%=or.getPh_gender()%></td>
-                 <td><%=or.getPhonenumber()%></td>
-                 <%if(or.getStatus().equals("0")){
+                 <td><%=or.getPh_phonenumber() %></td>
+                 <%if(or.getOr_status().equals("0")){
                 	%>
-                	  <td><a href='delete_form_user.yb?id=<%=or.getOrder_id()%>'>unorder</a></td>
+                	  <td><a href="delete_from_user.yb?id=<%=or.getOrder_id()%>">unorder</a></td>
                 	<% 
                  }else{
                    %>

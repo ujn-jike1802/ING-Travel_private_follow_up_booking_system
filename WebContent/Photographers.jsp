@@ -144,7 +144,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
                              <a href="attraction_show.yb?page=1"><span class="block" style="color: white;">景点推荐</span></a>
                         </li>
                        <li>
-                             <a href="Photographers.jsp"><span class="block" style="color: white;">预约摄影</span></a>
+                             <a href="photographer_and_pieces.yb"><span class="block" style="color: white;">预约摄影</span></a>
                         </li>
                         <li>
                              <a href="Form.jsp"><span class="block" style="color: white;" >信息反馈</span></a>
@@ -172,7 +172,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
        
        
        
-       <% if(phers!=null||phers.size()!=0){
+       <% if(!phers.equals(null)&&phers.size()!=0){
     	   for(int i=0;i<phers.size();i++){
     		   photographer pher=phers.get(i);
     		   pieces temp1=piece.get(2*i);
@@ -188,12 +188,12 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 		         	<div class="member-image">
 					<img src="images/member_140x145.jpg" alt="Member">
 					</div>
-						<div class="member-info">
+						<div>
 						<h3>摄影师:<%=pher.getPh_username() %></h3>
 						<h5>性别:<%=pher.getPh_gender() %></h5>
-						<p> 电话号码<%=pher.getPh_phonenumebr() %></p>
+						<h5> 电话号码<%=pher.getPh_phonenumber() %></h5>
 				<div class="social-touch">
-					<a href="addorder.yb?"><img src="images/yuyuea.png"></a>
+					<a href="addorder.yb?id=<%=pher.getPh_id() %>"><img src="images/yuyuea.png"></a>
 				</div>
 			</div>
 		</div>
@@ -217,7 +217,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 		                    </div>
 		                    <div class="text-desc" style="color:white;">
 		                    	<h3>作品一</h3>
-		                        <p>拍摄时间:<%=temp1.getPhoto_time() %></p>
+		                        <p>上架时间:<%=temp1.getPhoto_time() %></p>
 		                        <p>拍摄地点:<%=temp1.getPhoto_place() %></p>
 		                        <p>拍摄主题:<%=temp1.getPhoto_theme() %></p>
 		                    	<a href="attraction_show_by_name.yb?name=<%=temp1.getPhoto_place() %>" class="btn" style="color:white;">了解该地</a>
@@ -231,7 +231,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
 		                    </div>
 		                    <div class="text-desc" style="color:white;">
 		                    	<h3>作品二</h3>
-                                <p>拍摄时间:<%=temp2.getPhoto_time() %></p>
+                                <p>上架时间:<%=temp2.getPhoto_time() %></p>
 		                        <p>拍摄地点:<%=temp2.getPhoto_place() %></p>
 		                        <p>拍摄主题:<%=temp2.getPhoto_theme() %></p>
 		                    <a href="attraction_show_by_name.yb?name=<%=temp2.getPhoto_place() %>" class="btn" style="color:white;">了解该地</a>
@@ -267,7 +267,7 @@ p {font-size: 14px; font-weight: 300; line-height: 22px; padding: 0 30px; margin
                             <a href="first.html">首页</a>
                         </li>
                         <li  class="active">
-                            <a href="#">预约摄影</a>
+                            <a href="photographer_and_pieces.yb">预约摄影</a>
                         </li>
                     </ul>
             <div class="row clearfix">

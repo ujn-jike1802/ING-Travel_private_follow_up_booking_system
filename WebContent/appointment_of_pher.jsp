@@ -37,7 +37,6 @@
 <form action="pher_select_appointment.yb?do=yes" method="post">
      <table align="center">
                <tr><td></td><td>Input for fuzzy query</td></tr>
-             <tr><tr><td>Id:</td><td><input type="number" name="id"></td></tr>
              <tr><td>Username:</td><td><input type="text" name="username"/></td></tr>
         	 <tr><td>Gender:</td><td><input type="radio" name="gender" value="男"/> 男 <input type="radio" name="gender " value="女"/> 女 </td></tr>
              <tr><td><input type="submit" value="Query"/></td><td><input type="reset" value="Reset"/></td></tr>
@@ -66,15 +65,15 @@
         		 order or=orders.get(i);     	
         		 %>  
         	    <tr>
-                 <td><%=or.getPh_id()%></td>
-                 <td><%=or.getPh_username()%></td>
-                 <td><%=or.getPh_gender()%></td>
-                 <td><%=or.getPhonenumber()%></td>
-                 <%if(or.getStatus().equals("0")){ 
+                 <td><%=or.getId() %></td>
+                 <td><%=or.getUsername() %></td>
+                 <td><%=or.getGender() %></td>
+                 <td><%=or.getPhonenumber() %></td>
+                 <%if(or.getOr_status().equals("0")){ 
                 	 
                 	 %>
-                	   <td><a href='delete_from_pher.yb?id=<%=or.getOrder_id()%>'class="delete">拒绝</a></td>
-                       <td><a href='update_from_pher.yb?id=<%=or.getOrder_id()%>'class="order">接受</a></td>
+                	   <td><a href='delete_from_pher.yb?id=<%=or.getOrder_id()%>'class="delete">拒绝</a>
+                      <a href='update_from_pher.yb?id=<%=or.getOrder_id()%>'class="order">接受</a></td>
                 	 <%
                  }else{
                   %>

@@ -19,4 +19,6 @@ public interface orderdao {
 	 public order get_order_by_oid(String id);
 	 //更新预约表
 	 public void  update_by_Pher(order or);
+	 //增加预约
+	 public void  add(photographer pher,User user);
 }

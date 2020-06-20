@@ -18,6 +18,7 @@ public class attractions{
 	private String seasons;
 	private String attlevels;
 	private String attvideo;
+	private String attvioog;
 	public attractions(int id, String attname, String attsrc_img, String attsrc_img1, String attsrc_img2,
 			String attsrc_img3, String glname1, String glname2, String glname3, String atttype, String opentime,
 			String lasting, String seasons, String attlevels, String attvideo, String attvioog) {
@@ -51,7 +52,6 @@ public class attractions{
 	public void setAttvioog(String attvioog) {
 		this.attvioog = attvioog;
 	}
-	private String attvioog;
 	public int getId() {
 		return id;
 	}
